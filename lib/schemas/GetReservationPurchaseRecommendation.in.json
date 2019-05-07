@@ -1,0 +1,123 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "AccountId": {
+                    "description": "The account ID that is associated with the recommendation. ",
+                    "type": "string"
+                },
+                "AccountScope": {
+                    "description": "<p>The account scope that you want recommendations for. <code>PAYER</code> means that AWS includes the master account and any member accounts when it calculates its recommendations. <code>LINKED</code> means that AWS includes only member accounts when it calculates its recommendations.</p> <p>Valid values are <code>PAYER</code> and <code>LINKED</code>.</p>",
+                    "enum": [
+                        "PAYER",
+                        "LINKED"
+                    ],
+                    "type": "string"
+                },
+                "LookbackPeriodInDays": {
+                    "description": "The number of previous days that you want AWS to consider when it calculates your recommendations.",
+                    "enum": [
+                        "SEVEN_DAYS",
+                        "THIRTY_DAYS",
+                        "SIXTY_DAYS"
+                    ],
+                    "type": "string"
+                },
+                "NextPageToken": {
+                    "description": "The pagination token that indicates the next set of results that you want to retrieve.",
+                    "type": "string"
+                },
+                "PageSize": {
+                    "description": "The number of recommendations that you want returned in a single response object.",
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                "PaymentOption": {
+                    "description": "The reservation purchase option that you want recommendations for.",
+                    "enum": [
+                        "NO_UPFRONT",
+                        "PARTIAL_UPFRONT",
+                        "ALL_UPFRONT",
+                        "LIGHT_UTILIZATION",
+                        "MEDIUM_UTILIZATION",
+                        "HEAVY_UTILIZATION"
+                    ],
+                    "type": "string"
+                },
+                "Service": {
+                    "description": "The specific service that you want recommendations for.",
+                    "type": "string"
+                },
+                "ServiceSpecification": {
+                    "description": "The hardware specifications for the service instances that you want recommendations for, such as standard or convertible Amazon EC2 instances.",
+                    "properties": {
+                        "EC2Specification": {
+                            "description": "The Amazon EC2 hardware specifications that you want AWS to provide recommendations for.",
+                            "properties": {
+                                "OfferingClass": {
+                                    "description": "Whether you want a recommendation for standard or convertible reservations.",
+                                    "enum": [
+                                        "STANDARD",
+                                        "CONVERTIBLE"
+                                    ],
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "TermInYears": {
+                    "description": "The reservation term that you want recommendations for.",
+                    "enum": [
+                        "ONE_YEAR",
+                        "THREE_YEARS"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Service"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
